@@ -1,0 +1,44 @@
+<div class="container">
+    <form class="form"  (ngSubmit)="getValue(f)" #f="ngForm">
+      <mat-form-field class="mr-5">
+      <input  matInput type="text" name="ingredient" placeholder="insert your ingredient!" ngModel>
+      </mat-form-field>
+      <button class="mr-5" mat-raised-button color="primary" type="submit">Search by Ingredient</button>
+      <button class="mr-5" mat-raised-button color="primary" (click)="showList($event)">show ingredients list</button>
+    </form>
+  <mat-list class="mb-5" *ngIf="listLoaded">
+    <mat-list-item *ngFor="let ingredient of list | paginate: { itemsPerPage: 10, currentPage : ingredientsP}">
+      <h1 class=".ing-item" (click)="changeForm(ingredient.strIngredient1)">{{ingredient.strIngredient1 | json}}</h1>
+    </mat-list-item>
+    <pagination-controls (pageChange)="ingredientsP = $event"></pagination-controls>
+  </mat-list>
+  <div class="display">
+    <div *ngIf="drinksLoaded" class="items">
+        <mat-card class="mb-20 mr-5"  *ngFor="let drink of drinks | paginate: { itemsPerPage: 5, currentPage : drinksP}">
+            <mat-card-header>
+              <mat-card-title>{{drink.strDrink}}</mat-card-title>
+            </mat-card-header>
+              <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="getInfo(drink.idDrink)">View Details</button>
+              </mat-card-actions>
+        </mat-card>
+        <pagination-controls class="my-pagination" *ngIf="drinksLoaded" (pageChange)="drinksP = $event"></pagination-controls>
+    </div>
+    <div class="detail">
+      <mat-card *ngIf="loaded">
+        <mat-card-header>
+          <mat-card-title>{{card.title}}</mat-card-title>
+        </mat-card-header>
+        <img matCardImage class="center" src="{{card.img}}" style="width: 60%; height: 20%; " alt="">
+        <mat-card-content>
+          <h2 class="mb-5">Ingredients:</h2>
+          <ol class="mb-10">
+            <li *ngFor="let ingredient of card.ingredients">{{ingredient}}</li>
+          </ol>
+          <h2 class="mb-5">Instructions:</h2>
+          <h2>{{card.instructions}}</h2>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

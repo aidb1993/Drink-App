@@ -1,0 +1,46 @@
+.display{
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  grid-column-gap: 50px;
+  grid-template-rows: auto;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+.form{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.instructions{
+  margin-right: 10px;
+}
+
+.mb-10{
+  margin-bottom: 10px;
+}
+
+.mb-5{
+  margin-bottom: 5px;
+}
+
+.mb-20{
+  margin-bottom: 20px;
+}
+
+.mr-5{
+  margin-right: 5px;
+}
+
+.\.ing-item:hover{
+  cursor: pointer;
+  color: blueviolet;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.ngx-pagination .current {
+  background: blueviolet;
+}
